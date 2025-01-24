@@ -1,6 +1,7 @@
 import express from 'express'
 import testRoutes from './routes/testRoutes.js'
 import productRoutes from './routes/productRoutes.js'
+import userRoutes from './routes/userRoutes.js'
 import dotenv from 'dotenv'
 import connectDB from './utils/db.js'
 import setupSwagger from './utils/swagger.js'
@@ -16,6 +17,7 @@ setupSwagger(app)
 
 app.use('/api', testRoutes)
 app.use('/api/products', productRoutes)
+app.use('/api/users', userRoutes)
 
 app.get('/api/testdb', async (req, res) => {
     try {
