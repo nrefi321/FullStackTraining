@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import testRoutes from './routes/testRoutes.js'
 import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
@@ -13,6 +14,11 @@ dotenv.config()
 
 const app = express()
 app.use(express.json())
+app.use(cors({
+    origin: '*',
+    method: 'GET, POST, PUT, DELETE',
+    allowedHeaders: ['Content-Type', 'Authorization']
+}))
 setupSwagger(app)
 
 app.use('/api', testRoutes)
