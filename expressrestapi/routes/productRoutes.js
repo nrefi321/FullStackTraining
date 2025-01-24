@@ -1,5 +1,6 @@
 import express from 'express'
 import * as productController from '../controllers/productController.js'
+import authenticateJWT from '../middlewares/authMiddleware.js'
 
 const router = express.Router()
 
@@ -17,6 +18,8 @@ const router = express.Router()
  *  get:
  *   summary: Get all products
  *   tags: [products]
+ *   security:
+ *      - BearerAuth: []
  *   responses:
  *    200:
  *      description: List of all products
@@ -35,6 +38,8 @@ router.get('/', productController.getAllProducts)
  *   get:
  *     summary: Search products by name
  *     tags: [products]
+ *     security:
+ *        - BearerAuth: []
  *     parameters:
  *       - in: query
  *         name: name
@@ -52,7 +57,7 @@ router.get('/', productController.getAllProducts)
  *               items:
  *                 $ref: '#/components/schemas/Product'
  */
-router.get('/search', productController.searchProduct)
+router.get('/search',authenticateJWT, productController.searchProduct)
 // อ่านข้อมูลสินค้าเฉพาะตาม id 
 /**
  * @swagger
@@ -60,6 +65,8 @@ router.get('/search', productController.searchProduct)
  *   get:
  *     summary: Get a product by ID
  *     tags: [products]
+ *     security:
+*         - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -77,7 +84,7 @@ router.get('/search', productController.searchProduct)
  *       404:
  *         description: Product not found
  */
-router.get('/:id', productController.getProductById)
+router.get('/:id',authenticateJWT, productController.getProductById)
 // สร้างข้อมูลสินค้า
 /**
  * @swagger
@@ -85,6 +92,8 @@ router.get('/:id', productController.getProductById)
  *   post:
  *     summary: Create a new product
  *     tags: [products]
+ *     security:
+ *        - BearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -107,7 +116,7 @@ router.get('/:id', productController.getProductById)
  *             schema:
  *               $ref: '#/components/schemas/Product'
  */
-router.post('/', productController.createProduct)
+router.post('/',authenticateJWT, productController.createProduct)
 // อัปเดตข้อมูลสินค้า
 /**
  * @swagger
@@ -115,6 +124,8 @@ router.post('/', productController.createProduct)
  *   put:
  *     summary: Update an existing product
  *     tags: [products]
+ *     security:
+ *        - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -145,7 +156,7 @@ router.post('/', productController.createProduct)
  *       404:
  *         description: Product not found
  */
-router.put('/:id', productController.updateProduct)
+router.put('/:id',authenticateJWT, productController.updateProduct)
 
 // ลบข้อมูลสินค้า
 /**
@@ -154,6 +165,8 @@ router.put('/:id', productController.updateProduct)
  *   delete:
  *     summary: Delete a product by ID
  *     tags: [products]
+ *     security:
+ *        - BearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -167,6 +180,6 @@ router.put('/:id', productController.updateProduct)
  *       404:
  *         description: Product not found
  */
-router.delete('/:id', productController.deleteProduct)
+router.delete('/:id',authenticateJWT, productController.deleteProduct)
 
 export default router
