@@ -1,0 +1,16 @@
+h1 {
+  color: rgb(85, 141, 247);
+  background-color: bisque;
+}
+div#d1 {
+  color: rgb(3, 3, 3);
+  background-color: rgb(255, 172, 189);
+}
+div.d2 {
+  color: rgb(0, 0, 0);
+  background-color: rgb(211, 240, 198);
+}
+.p1 {
+  color: rgb(131, 149, 247);
+  background-color: rgb(241, 255, 218);
+}
