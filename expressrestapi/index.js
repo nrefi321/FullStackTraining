@@ -3,12 +3,16 @@ import testRoutes from './routes/testRoutes.js'
 import productRoutes from './routes/productRoutes.js'
 import dotenv from 'dotenv'
 import connectDB from './utils/db.js'
+import setupSwagger from './utils/swagger.js'
+import { set } from 'mongoose'
 // import mongoose from 'mongoose'
 
-// connectDB()
+connectDB()
 dotenv.config()
 
 const app = express()
+app.use(express.json())
+setupSwagger(app)
 
 app.use('/api', testRoutes)
 app.use('/api/products', productRoutes)
@@ -25,3 +29,21 @@ app.get('/api/testdb', async (req, res) => {
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on http://${process.env.HOST}:${process.env.PORT}`)
 })
+
+// // เริ่มต้น server
+// const startServer = async () => {
+//     try {
+//       // เชื่อมต่อ MongoDB ก่อน
+//       await connectDB()
+      
+//       // จากนั้นค่อยเริ่ม server
+//       app.listen(process.env.PORT, () => {
+//         console.log(`Server started on http://${process.env.HOST}:${process.env.PORT}`)
+//       })
+//     } catch (error) {
+//       console.error('Failed to start server:', error)
+//       process.exit(1)
+//     }
+//   }
+  
+//   startServer()
