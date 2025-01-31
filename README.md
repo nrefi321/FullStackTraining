@@ -39,3 +39,8 @@ download react router
 Download component used in tailwind
 `npm install @headlessui/react` 
 `npm install @heroicons/react`
+
+
+
+npm run build
+npm run preview

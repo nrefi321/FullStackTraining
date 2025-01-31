@@ -1,10 +1,12 @@
-import React from 'react'
-import MainLayout from '@/layouts/MainLayout'
+import { useEffect } from "react"
 
 export default function Contact() {
+
+   useEffect(() => {
+      document.title = 'Contact - E-commerce'
+    }, [])
+
   return (
-    <MainLayout>
-    <div>Contact Page</div>
-    </MainLayout>
+    <h1>Contact Page</h1>
   )
 }
