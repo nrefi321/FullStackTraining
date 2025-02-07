@@ -1,4 +1,4 @@
-export interface User {
+export interface UserResponse {
     accessToken: string;
     user: {
         id: string;
@@ -14,6 +14,12 @@ export interface LoginData {
     password: string;
 }
 
+export interface RegisterResponse{
+    success: boolean;
+    msg: string;
+    data: RegisterData;
+}
+
 export interface RegisterData {
     username: string;
     password: string;
@@ -21,3 +27,6 @@ export interface RegisterData {
     email: string;
     tel: string;
 }
+
+
+

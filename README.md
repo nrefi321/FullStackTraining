@@ -46,3 +46,12 @@ Download component used in tailwind
 `npm run preview`
 
 add stores `npm i zustand` 
+
+React Validation (สำหรับตรวจสอบว่าใส่ข้อมูลฟอร์มครบมั้ย) : React hook form
+`npm install react-hook-form`
+
+Alert window
+`npm install sweetalert2`
+
+install Dashboard
+`npm install recharts`
