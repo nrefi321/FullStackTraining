@@ -5,6 +5,9 @@ import Home from "@/pages/Home"
 import ProductDetail from "@/pages/ProductDetail"
 import Cart from "@/pages/Cart"
 import { createBrowserRouter, RouterProvider } from "react-router"
+import Login from "@/pages/Login"
+import Forgotpassword from "@/pages/ForgotPassword"
+import Register from "@/pages/Register"
 
 const router = createBrowserRouter([
     {
@@ -32,6 +35,18 @@ const router = createBrowserRouter([
                 element: <Cart />
             }
         ]
+    },
+    {
+        path: "/login",
+        element: <Login />
+    },
+    {
+        path: "/register",
+        element: <Register />
+    },
+    {
+        path: "/forgotpassword",
+        element: <Forgotpassword />
     }
 ])
 

@@ -2,6 +2,8 @@ import { Link } from 'react-router'
 
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useCounterStore } from '@/stores/counterStore'
+import { useCartStore } from '@/stores/cartStore'
 
 const navigation = [
   { name: 'Home', href: '/', current: true },
@@ -14,7 +16,13 @@ function classNames(...classes:any) {
 }
 
 export default function Navbar() {
-  return (
+
+  const CartItem  = useCartStore(state => state.items)
+  const CartItemCount = useCartStore(state => state.items.length)
+
+  const { count } = useCounterStore()
+
+return (
 <Disclosure as="nav" className="bg-gray-500" aria-label="Global">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
@@ -50,14 +58,21 @@ export default function Navbar() {
                     {item.name}
                   </Link>
                 ))}
+                
+                <h2 className="text-center py-1.5 font-semibold tracking-tight text-gray-300">Counter: {CartItemCount}</h2>
+
               </div>
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             
+            <Link to = '/login' className="text-white bg-indigo-600 py-1 px-2 rounded hover:bg-blue-800 relative mx-4">
+              Login
+            </Link>
+
           <Link to='/cart' className="text-gray-400 hover:text-white relative mx-4">
               Cart
-              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">10</span>
+              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">{CartItemCount}</span>
             </Link>
 
             <button

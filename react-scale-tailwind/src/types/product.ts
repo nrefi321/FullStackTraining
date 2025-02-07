@@ -10,3 +10,8 @@ export interface Product {
         count: number;
     }   
 }
+
+// export เหมือนเดิม และเพิ่ม quantity
+export interface CartItem extends Product {
+    quantity: number;
+}

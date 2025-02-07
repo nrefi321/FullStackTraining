@@ -42,5 +42,7 @@ Download component used in tailwind
 
 
 
-npm run build
-npm run preview
+`npm run build`
+`npm run preview`
+
+add stores `npm i zustand` 
